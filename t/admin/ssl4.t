@@ -114,8 +114,9 @@ __DATA__
 --- yaml_config
 apisix:
     node_listen: 1984
-    ssl:
-        key_encrypt_salt:
+    data_encryption:
+        enable: true
+        keyring:
             - edd1c9f0985e76a1
             - edd1c9f0985e76a2
 --- config
@@ -152,8 +153,10 @@ passed
 --- yaml_config
 apisix:
     node_listen: 1984
-    ssl:
-        key_encrypt_salt: "edd1c9f0985e76a1"
+    data_encryption:
+        enable: true
+        keyring:
+            - edd1c9f0985e76a1
 --- config
     location /t {
         content_by_lua_block {
@@ -186,8 +189,10 @@ passed
 --- yaml_config
 apisix:
     node_listen: 1984
-    ssl:
-        key_encrypt_salt: "edd1c9f0985e76a1"
+    data_encryption:
+        enable: true
+        keyring:
+            - edd1c9f0985e76a1
 --- response_body eval
 qr{connected: 1
 ssl handshake: true
@@ -211,8 +216,9 @@ server name: "www.test.com"
 --- yaml_config
 apisix:
     node_listen: 1984
-    ssl:
-        key_encrypt_salt:
+    data_encryption:
+        enable: true
+        keyring:
             - edd1c9f0985e76a1
 --- response_body eval
 qr{connected: 1
@@ -237,8 +243,9 @@ server name: "www.test.com"
 --- yaml_config
 apisix:
     node_listen: 1984
-    ssl:
-        key_encrypt_salt:
+    data_encryption:
+        enable: true
+        keyring:
             - edd1c9f0985e76a2
 --- error_log
 decrypt ssl key failed
@@ -250,8 +257,9 @@ decrypt ssl key failed
 --- yaml_config
 apisix:
     node_listen: 1984
-    ssl:
-        key_encrypt_salt:
+    data_encryption:
+        enable: true
+        keyring:
             - edd1c9f0985e76a2
             - edd1c9f0985e76a1
 --- response_body eval
@@ -273,8 +281,9 @@ close: 1 nil}
 --- yaml_config
 apisix:
     node_listen: 1984
-    ssl:
-        key_encrypt_salt:
+    data_encryption:
+        enable: true
+        keyring:
             - edd1c9f0985e76a1
 --- config
 location /t {
@@ -292,8 +301,9 @@ location /t {
 --- yaml_config
 apisix:
     node_listen: 1984
-    ssl:
-        key_encrypt_salt: null
+    data_encryption:
+        enable: true
+        keyring:
 --- config
 location /t {
     content_by_lua_block {
@@ -328,8 +338,9 @@ passed
 --- yaml_config
 apisix:
     node_listen: 1984
-    ssl:
-        key_encrypt_salt: null
+    data_encryption:
+        enable: true
+        keyring:
 --- response_body eval
 qr{connected: 1
 ssl handshake: true
@@ -353,8 +364,9 @@ server name: "www.test.com"
 --- yaml_config
 apisix:
     node_listen: 1984
-    ssl:
-        key_encrypt_salt: null
+    data_encryption:
+        enable: true
+        keyring:
 --- config
 location /t {
     content_by_lua_block {
@@ -371,8 +383,9 @@ location /t {
 --- yaml_config
 apisix:
     node_listen: 1984
-    ssl:
-        key_encrypt_salt: null
+    data_encryption:
+        enable: true
+        keyring:
 --- config
 location /t {
     content_by_lua_block {
